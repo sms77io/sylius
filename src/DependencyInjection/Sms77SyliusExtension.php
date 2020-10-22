@@ -12,8 +12,11 @@ final class Sms77SyliusExtension extends Extension {
      * {@inheritdoc}
      */
     public function load(array $config, ContainerBuilder $container): void {
-        $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $config = $this->processConfiguration(
+            $this->getConfiguration([], $container), $config);
+
+        $loader = new YamlFileLoader(
+            $container, new FileLocator(__DIR__ . '/../Resources/config'));
 
         $loader->load('services.yml');
     }

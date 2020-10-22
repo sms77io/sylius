@@ -2,7 +2,6 @@
 
 namespace Sms77\SyliusPlugin\Repository;
 
-use Doctrine\ORM\EntityManager;
 use Sms77\SyliusPlugin\Entity\Config;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 

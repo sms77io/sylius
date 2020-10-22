@@ -3,21 +3,24 @@ sms77:
     configs: Configurations
     edit_config: Edit Configuration
     messages: Messages
+    new_config: New Configuration
     new_message: Write a new SMS
 sms77_api:
-  customerGroups: Customer groups (limits sending only to customers from the specified groups)
-  response: Response
-  one_or_more_responses: Response(s)
+  apiKey: API Key
+  config: Configuration
+  customerGroups: Customer Groups
+  customerGroups_desc: limits sending only to customers from the specified groups
+  debug: Debug
+  enabled: Enabled
+  from: from
+  label: Label
   msg: Message
+  onShipping: On Shipping
+  one_or_more_responses: Response(s)
+  response: Response
+  sender: Sender
   ui:
     new_config: New Configuration
     configs: Configurations
     config: Configuration
-  apiKey: API Key
-  enabled: Enabled
-  label: Label
-  onShipping: On Shipping
-  debug: Debug
-  sender: Sender (from)
-  config: Configuration
   useDefault: Use gateway default

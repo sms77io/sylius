@@ -14,7 +14,7 @@ sylius_grid:
           label: sms77_api.apiKey
         sender:
           type: string
-          label: sms77_api.sender
+          label: sms77_api.from
         enabled:
           type: twig
           label: sms77_api.enabled
@@ -69,6 +69,11 @@ sylius_grid:
         sender:
           type: string
           label: sms77_api.sender
+        customers:
+          type: twig
+          label: sms77_api.customers
+          options:
+            template: "@Sms77SyliusPlugin/Ui/Grid/Field/stringify.html.twig"
         customerGroups:
           type: twig
           label: sms77_api.customerGroups

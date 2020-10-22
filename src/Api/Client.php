@@ -16,17 +16,14 @@ class Client {
         $this->configuration = $configurationRepo->findEnabled();
     }
 
-    public function sms($data): void {
+    public function sms(ShipmentInterface $shipment): void {
         $state = null;
         $to = null;
         $text = null;
 
-        if ($data instanceof ShipmentInterface) {
-            /* @var ShipmentInterface $data */
-            $state = $data->getState();
-            $to = $this->orderToPhone($data->getOrder());
-            $text = $this->stateToText($state);
-        }
+        $state = $shipment->getState();
+        $to = $this->orderToPhone($shipment->getOrder());
+        $text = $this->stateToText($state);
 
         $client = $this->initApi();
 
@@ -52,7 +49,8 @@ class Client {
     }
 
     private function stateToText(string $state): ?string {
-        if (null !== $this->configuration && OrderShippingStates::STATE_SHIPPED === $state) {
+        if (null !== $this->configuration
+            && OrderShippingStates::STATE_SHIPPED === $state) {
             return $this->configuration->getShippingText();
         }
 

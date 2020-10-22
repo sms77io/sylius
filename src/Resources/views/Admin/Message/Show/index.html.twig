@@ -7,7 +7,7 @@
         <table class="ui celled table">
             <tbody>
             <tr>
-                <th>Response</th>
+                <th>{{ 'sms77_api.response' | trans }}</th>
                 <td>
                     {% for response in message.response %}
                         <pre style='white-space: normal'>{{ response }}</pre>
@@ -16,18 +16,19 @@
             </tr>
 
             <tr>
-                <th>CustomerGroups</th>
+                <th>{{ 'sms77_api.customerGroups' | trans }}</th>
                 <td>
-                    {% include "@Sms77SyliusPlugin/Ui/Grid/Field/stringify.html.twig" with {'data': message.customerGroups} %}
+                    {% include "@Sms77SyliusPlugin/Ui/Grid/Field/stringify.html.twig" with {
+                        'data': message.customerGroups} %}
                 </td>
             </tr>
             <tr>
-                <th data-label="Name">Sender</th>
-                <td data-label="Age">{{ message.sender }}</td>
+                <th>{{ 'sms77_api.sender' | trans }}</th>
+                <td>{{ message.sender }}</td>
             </tr>
             <tr>
-                <th data-label="Name">Config</th>
-                <td data-label="Age">{{ message.config.label }}</td>
+                <th>{{ 'sms77_api.config' | trans }}</th>
+                <td>{{ message.config.label }}</td>
             </tr>
             </tbody>
         </table>

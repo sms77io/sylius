@@ -18,34 +18,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  * @Table(name="sms77_message")
  */
 class Message implements ResourceInterface {
-    /**
-     * @Column(type="string")
-     * @var string $msg
-     */
-    protected $msg = '';
-
     /** @ORM\ManyToOne(targetEntity="Config", inversedBy="messages") */
     protected $config;
-
-    /**
-     * @Column(type="string")
-     * @var string $sender
-     */
-    protected $sender = '';
-
-    /**
-     * @Column(type="json", nullable=true)
-     * @var string | null $response
-     */
-    protected $response;
-
-    /**
-     * @Column(type="integer")
-     * @Id()
-     * @GeneratedValue()
-     * @var int $id
-     */
-    protected $id;
 
     /**
      * Many Message have Many Configs.
@@ -56,6 +30,35 @@ class Message implements ResourceInterface {
      *      )
      */
     protected $customerGroups;
+
+    /** @var array $customers */
+    protected $customers = [];
+
+    /**
+     * @Column(type="integer")
+     * @Id()
+     * @GeneratedValue()
+     * @var int $id
+     */
+    protected $id;
+
+    /**
+     * @Column(type="string")
+     * @var string $msg
+     */
+    protected $msg = '';
+
+    /**
+     * @Column(type="json", nullable=true)
+     * @var string | null $response
+     */
+    protected $response;
+
+    /**
+     * @Column(type="string")
+     * @var string $sender
+     */
+    protected $sender = '';
 
     public function __construct() {
         $this->customerGroups = new ArrayCollection();
@@ -87,11 +90,11 @@ class Message implements ResourceInterface {
         $this->customerGroups = $customerGroups;
     }
 
-    public function getResponse() {
+    public function getResponse(): ?string {
         return $this->response;
     }
 
-    public function setResponse($response): void {
+    public function setResponse(?string $response): void {
         $this->response = $response;
     }
 
@@ -117,5 +120,20 @@ class Message implements ResourceInterface {
 
     public function setConfig(Config $config): void {
         $this->config = $config;
+    }
+
+    /** @return array */
+    public function getCustomers(): array {
+        return $this->customers;
+    }
+
+    /** @param array $customers */
+    public function setCustomers(array $customers): void {
+        $this->customers = $customers;
+    }
+
+    /** @param $customer */
+    public function addCustomer($customer): void {
+        $this->customers[] = $customer;
     }
 }

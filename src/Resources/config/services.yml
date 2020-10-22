@@ -24,7 +24,7 @@ services:
     class: Sms77\SyliusPlugin\Form\Type\MessageType
     tags:
       - { name: form.type }
-    arguments: ['%sms77.model.message.class%', ['sylius']]
+    arguments: ['%sms77.model.message.class%', ['sylius'], '@sylius.repository.customer',]
 
   Sms77\SyliusPlugin\Form\Type\ConfigType:
     class: Sms77\SyliusPlugin\Form\Type\ConfigType

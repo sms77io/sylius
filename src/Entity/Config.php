@@ -28,11 +28,13 @@ class Config implements ResourceInterface, TranslatableInterface {
      * @var string $apiKey
      */
     protected $apiKey;
+
     /**
      * @Column(type="string", nullable=true)
      * @var string $label
      */
     protected $label;
+
     /**
      * @Column(type="integer")
      * @Id()
@@ -40,23 +42,27 @@ class Config implements ResourceInterface, TranslatableInterface {
      * @var integer $id
      */
     protected $id;
+
     /**
      * @Column(type="boolean")
      * @var bool $onShipping
      */
     protected $onShipping = false;
+
     /**
      * @Column(type="boolean")
      * @var bool $enabled
      */
     protected $enabled = true;
+
     /**
      * @Column(type="boolean")
      * @var bool $debug
      */
     protected $debug = false;
+
     /**
-     * @var Message[] $apiKey
+     * @var Message[] $messages
      * @ORM\OneToMany(targetEntity="Message", mappedBy="config")
      */
     private $messages;
@@ -67,8 +73,8 @@ class Config implements ResourceInterface, TranslatableInterface {
         $this->messages = new ArrayCollection();
     }
 
-    public function __toString() {
-        return $this->label ?? $this->id;
+    public function __toString(): string {
+        return $this->label ?? (string)$this->id;
     }
 
     public function getApiKey(): ?string {
